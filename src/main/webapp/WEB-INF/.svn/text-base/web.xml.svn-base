@@ -1,0 +1,568 @@
+<web-app>
+
+ <!-- 对应401应用配置 -->
+  <servlet>
+    <servlet-name>app</servlet-name>
+    <display-name>app_init</display-name>
+    <description>app_init</description>
+    <servlet-class>com.sxdt.eas.server.App</servlet-class>
+    <load-on-startup>0</load-on-startup>
+    <init-param>
+    	<param-name>appKey</param-name>
+    	<param-value>app_key_401</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>appToken</param-name>
+    	<param-value>test_token_eas_2016</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>appid</param-name>
+    	<param-value>401</param-value>
+    </init-param>
+  </servlet>
+
+  
+  <!-- 2.1	客户新增 -->
+  <servlet>
+    <servlet-name>Cst_addNewSHECustomer</servlet-name>
+    <display-name>addNewSHECustomer</display-name>
+    <description>addNewSHECustomer</description>
+    <servlet-class>com.sxdt.eas.server.Cst_addNewSHECustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_addNewSHECustomer</servlet-name>
+    <url-pattern>/crm/customer/addNewSHECustomer.do</url-pattern>
+  </servlet-mapping>
+  
+  
+   <!-- 2.2	客户更新-->
+  <servlet>
+    <servlet-name>Cst_updatSHECustomer</servlet-name>
+    <display-name>updatSHECustomer</display-name>
+    <description>updatSHECustomer</description>
+    <servlet-class>com.sxdt.eas.server.Cst_updatSHECustomer</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{"errmsg": "成功","errcode": 0}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_updatSHECustomer</servlet-name>
+    <url-pattern>/crm/customer/updatSHECustomer.do</url-pattern>
+  </servlet-mapping>
+  
+   <!-- 2.3	客户事件新增-->
+  <servlet>
+    <servlet-name>Cst_addNewCutEvent</servlet-name>
+    <display-name>addNewCutEvent</display-name>
+    <description>addNewCutEvent</description>
+    <servlet-class>com.sxdt.eas.server.Cst_addNewCutEvent</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{"errmsg": "成功","errcode": 0}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_addNewCutEvent</servlet-name>
+    <url-pattern>/crm/customer/addNewCutEvent.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 2.4	客户意向新增-->
+  <servlet>
+    <servlet-name>Cst_addNewCutIntent</servlet-name>
+    <display-name>addNewCutIntent</display-name>
+    <description>addNewCutIntent</description>
+    <servlet-class>com.sxdt.eas.server.Cst_addNewCutIntent</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{"errmsg": "成功","errcode": 0}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_addNewCutIntent</servlet-name>
+    <url-pattern>/crm/customer/addNewCutIntent.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 2.5	用户鉴权 -->
+  <servlet>
+    <servlet-name>Cst_checkLogin</servlet-name>
+    <display-name>checkLogin</display-name>
+    <description>checkLogin</description>
+    <servlet-class>com.sxdt.eas.server.Cst_checkLogin</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+		        "content": {
+		            "loginState": 1,
+		            "userGUID": "100000"
+		        },
+		        "errmsg": "成功",
+		        "errcode": 0
+   			 }
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_checkLogin</servlet-name>
+    <url-pattern>/crm/customer/checkLogin.do</url-pattern>
+  </servlet-mapping>
+  
+  
+    <!-- 2.6	案场查询指标金额完成情况 -->
+  <servlet>
+    <servlet-name>Cst_getReveivedAmount</servlet-name>
+    <display-name>getReveivedAmount</display-name>
+    <description>getReveivedAmount</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getReveivedAmount</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+				"errcode":0,
+				"errmsg":"成功",
+				"content":{
+					"list":[{
+						"companyGUID":"",
+						"reveivedAmount":100,
+						"subscribeAmount":0,
+						"signAmount":0
+						}
+						]
+				}
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getReveivedAmount</servlet-name>
+    <url-pattern>/crm/customer/getReveivedAmount.do</url-pattern>
+  </servlet-mapping>
+  
+  
+   <!-- 2.7	获取客户未达款情况 -->
+  <servlet>
+    <servlet-name>Cst_getUnPayAmount</servlet-name>
+    <display-name>getUnPayAmount</display-name>
+    <description>getUnPayAmount</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getUnPayAmount</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+				"errcode":0,
+				"errmsg":"成功",
+				"content":{
+					"list":[{
+						"customerGUID":"1121",
+						"unPayAmount",100
+						}
+					]
+				}
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getUnPayAmount</servlet-name>
+    <url-pattern>/crm/customer/getUnPayAmount.do</url-pattern>
+  </servlet-mapping>
+  
+     <!-- 2.8	获取合同签约应完成时间-->
+  <servlet>
+    <servlet-name>Cst_getConstractToSignDate</servlet-name>
+    <display-name>getConstractToSignDate</display-name>
+    <description>getConstractToSignDate</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getConstractToSignDate</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+				"errcode":0,
+				"errmsg":"成功",
+				"content":{
+					"date":"2015-10-01 00:00:00"
+				}
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getConstractToSignDate</servlet-name>
+    <url-pattern>/crm/customer/getConstractToSignDate.do</url-pattern>
+  </servlet-mapping>
+  
+    <!-- 2.9	获取合同全额到账应完成时间-->
+  <servlet>
+    <servlet-name>Cst_getConstractToReviDate</servlet-name>
+    <display-name>getConstractToReviDate</display-name>
+    <description>getConstractToReviDate</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getConstractToReviDate</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+				"errcode":0,
+				"errmsg":"成功",
+				"content":{
+					"date":"2015-10-01 00:00:00"
+				}
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getConstractToReviDate</servlet-name>
+    <url-pattern>/crm/customer/getConstractToReviDate.do</url-pattern>
+  </servlet-mapping>
+  
+   <!-- 2.10	房产情况列表查询列表接口-->
+  <servlet>
+    <servlet-name>Cst_getSaleControlList</servlet-name>
+    <display-name>getSaleControlList</display-name>
+    <description>getSaleControlList</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getSaleControlList</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+			{
+			    "errcode": 0,
+			    "errmsg": "成功",
+			    "content": {
+			        "page": 1,
+			        "total": 16,
+			        "list": [
+			            {
+			                "unitName": "一单元",
+			                "roomGUID": "3j23kj2k3",
+			                "roomName": "三房一厅",
+			                "roomArea": "面积"
+			            }
+			        ]
+			    }
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getSaleControlList</servlet-name>
+    <url-pattern>/crm/customer/getSaleControlList.do</url-pattern>
+  </servlet-mapping>
+  
+  
+   <!-- 2.11	房产预留信息列表查询接口-->
+  <servlet>
+    <servlet-name>Cst_getSaleControlDetail</servlet-name>
+    <display-name>getSaleControlDetail</display-name>
+    <description>getSaleControlDetail</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getSaleControlDetail</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+			    "errcode": 0,
+			    "errmsg": "",
+			    "content": {
+			        "isPermission": 1,
+			        "list": [
+			            {
+			                "userName": "张三",
+			                "reason": "原因",
+			                "date": "2015-11-11 11:11:11"
+			            }
+			        ]
+			    }
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getSaleControlDetail</servlet-name>
+    <url-pattern>/crm/customer/getSaleControlDetail.do</url-pattern>
+  </servlet-mapping>
+  
+     <!-- 2.12	房产预留设置接口-->
+  <servlet>
+    <servlet-name>Cst_keepSaleControl</servlet-name>
+    <display-name>keepSaleControl</display-name>
+    <description>keepSaleControl</description>
+    <servlet-class>com.sxdt.eas.server.Cst_keepSaleControl</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+			    "errcode": 0,
+			    "errmsg": "成功",
+			    "content": {
+			        "isPermission": 0,
+			        "message": "房间已被预留"
+			    }
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_keepSaleControl</servlet-name>
+    <url-pattern>/crm/customer/keepSaleControl.do</url-pattern>
+  </servlet-mapping>
+  
+  
+       <!-- 2.13	房产取消预留设置接口-->
+  <servlet>
+    <servlet-name>Cst_seelSaleControl</servlet-name>
+    <display-name>seelSaleControl</display-name>
+    <description>seelSaleControl</description>
+    <servlet-class>com.sxdt.eas.server.Cst_seelSaleControl</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+			    "errcode": 0,
+			    "errmsg": "成功",
+			    "content": {
+			        "isPermission": 0,
+			        "message": "无法取消预留"
+			    }
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_seelSaleControl</servlet-name>
+    <url-pattern>/crm/customer/seelSaleControl.do</url-pattern>
+  </servlet-mapping>
+  
+   <!-- 报表榜单-->
+  
+   <!-- 2.1	销售报表取数接口-->
+  <servlet>
+    <servlet-name>Cst_getSaleReportData</servlet-name>
+    <display-name>getSaleReportData</display-name>
+    <description>getSaleReportData</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getSaleReportData</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+			    "errcode": 0,
+			    "errmsg": "成功",
+			    "content": {
+			        "list": [
+			            {
+			                "projectGUID": "13t1341f1",
+			                "type": "认购金额",
+			                "total": 100000,
+			                "varList": [
+			                    {
+			                        "teamGUID": "123",
+			                        "teamName": "团队1",
+			                        "var": 30000,
+			                        "percent": 30
+			                    },
+			                    {
+			                        "teamGUID": "124",
+			                        "teamName": "团队2",
+			                        "var": 70000,
+			                        "percent": 70
+			                    }
+			                ]
+			            },
+			            {
+			                "projectGUID": "13t1341f1",
+			                "type": "认购套数",
+			                "total": 60,
+			                "varList": [
+			                    {
+			                        "teamGUID": "123",
+			                        "teamName": "团队1",
+			                        "var": 30,
+			                        "percent": 50
+			                    },
+			                    {
+			                        "teamGUID": "124",
+			                        "teamName": "团队2",
+			                        "var": 30,
+			                        "percent": 50
+			                    }
+			                ]
+			            }
+			        ]
+			    }
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getSaleReportData</servlet-name>
+    <url-pattern>/crm/customer/getSaleReportData.do</url-pattern>
+  </servlet-mapping>
+  
+     <!-- 2.2	榜单取数接口-->
+  <servlet>
+    <servlet-name>Cst_getSaleRank</servlet-name>
+    <display-name>getSaleRank</display-name>
+    <description>getSaleRank</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getSaleRank</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+			    "errcode": 0,
+			    "errmsg": "成功",
+			    "content": {
+			       "list": [
+			            {
+			                "projectGUID": "13t1341f1",
+			                "teamGUID": "123",
+			                "teamName": "团队1",
+			                "saleAmount": 1000000,
+			                "saleMan": "张三"
+			            },
+			            {
+			                "projectGUID": "13t1341f1",
+			                "teamGUID": "321",
+			                "teamName": "团队2",
+			                "saleAmount": 1090000,
+			                "saleMan": "李四"
+			            }
+			        ]
+			    }
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getSaleRank</servlet-name>
+    <url-pattern>/crm/customer/getSaleRank.do</url-pattern>
+  </servlet-mapping>
+  
+   <!-- 2.14 签约回款跟进提醒明细查询-->
+  <servlet>
+    <servlet-name>Cst_getFollowRemind</servlet-name>
+    <display-name>getFollowRemind</display-name>
+    <description>getFollowRemind</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getFollowRemind</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+    "errcode": 0,
+    "errmsg": "成功",
+    "content": {
+        "page": 1,
+        "total": 47,
+        "list": [
+            {
+                "cstGUID": "0006DB2A-73CF-4CAB-B1DB-CA19D2401C09",
+                "day": 5,
+                "payName": "全额到账",
+                "dateTime": "2016-04-01 00:00:00",
+                "money": 10000
+            },
+            {
+                "cstGUID": "0006DB2A-73CF-4CAB-B1DB-CA19D2401C09",
+                "day": 3,
+                "payName": "首期款",
+                "dateTime": "2016-04-03 00:00:00",
+                "money": 13000
+            }
+        ]
+    }
+}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getFollowRemind</servlet-name>
+    <url-pattern>/crm/customer/getFollowRemind.do</url-pattern>
+  </servlet-mapping>
+  
+   <!-- 2.15	签约回款跟进提醒总数查询 -->
+  <servlet>
+    <servlet-name>Cst_getFollowRemindCount</servlet-name>
+    <display-name>getFollowRemindCount</display-name>
+    <description>getFollowRemindCount</description>
+    <servlet-class>com.sxdt.eas.server.Cst_getFollowRemindCount</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+			    "errcode": 0,
+			    "errmsg": "成功",
+			    "content": {
+			      	"total":20
+			    }
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_getFollowRemindCount</servlet-name>
+    <url-pattern>/crm/customer/getFollowRemindCount.do</url-pattern>
+  </servlet-mapping>
+     <!-- 2.16	用户密码修改接口 -->
+  <servlet>
+    <servlet-name>Cst_passwordMaintain</servlet-name>
+    <display-name>Cst_passwordMaintain</display-name>
+    <description>Cst_passwordMaintain</description>
+    <servlet-class>com.sxdt.eas.server.Cst_passwordMaintain</servlet-class>
+    <init-param>
+    	<param-name>resultJson</param-name>
+    	<param-value>
+    	<![CDATA[ 
+    		{
+			    "errcode": 0,
+			    "errmsg": "成功",
+			    "content": {
+			      	"state":1,
+          			"message":"修改成功"
+			    }
+			}
+		 ]]> 
+    	</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cst_passwordMaintain</servlet-name>
+    <url-pattern>/crm/customer/passwordMaintain.do</url-pattern>
+  </servlet-mapping>
+</web-app>
